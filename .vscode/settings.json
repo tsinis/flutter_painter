@@ -1,0 +1,73 @@
+{
+	"dart.lineLength": 80, // We are running on basic 80 line length here.
+	"editor.rulers": [
+		80
+	],
+	"[dart]": {
+		"editor.rulers": [
+			80
+		],
+		"editor.defaultFormatter": "Dart-Code.dart-code",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true, // Orginizing imports on save
+			"source.fixAll": true // Fixin "fixable" issues, basically like dart fix --apply do.
+		}
+	},
+	"editor.formatOnSave": true,
+	"files.insertFinalNewline": true,
+	"dart.flutterSdkPath": ".fvm/flutter_sdk",
+	// Remove .fvm files from search, if you dont use FMV, just ignore it.
+	"search.exclude": {
+		"**/.fvm": true
+	},
+	// Remove from file watching same as aboce
+	"files.watcherExclude": {
+		"**/.fvm": true
+	},
+	"flutterStylizer": {
+		"memberOrdering": [
+			"public-constructor",
+			"named-constructors",
+			"private-static-variables",
+			"private-instance-variables",
+			"private-static-methods",
+			"private-other-methods",
+			"public-other-methods",
+			"public-static-variables",
+			"public-static-methods",
+			"public-instance-variables",
+			"public-override-variables",
+			"public-override-methods",
+			"build-method",
+		],
+		"groupAndSortGetterMethods": true,
+		"groupAndSortVariableTypes": true,
+		"processEnumsLikeClasses": true,
+		"sortClassesWithinFile": true,
+		"sortOtherMethods": false,
+	},
+	"cSpell.words": [
+		"Airconditioner",
+		"appicon",
+		"approvable",
+		"autovalidate",
+		"caronsale",
+		"Codabar",
+		"cybertruck",
+		"datetime",
+		"effenciency",
+		"iban",
+		"idempotency",
+		"mlkit",
+		"Prefs",
+		"Pssst",
+		"rebuilder",
+		"Shooted",
+		"Unbekannt",
+		"vimo",
+		"vimos",
+		"workmanager",
+		"WVWZZZAUZHW",
+		"zipcode"
+	]
+}

@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
+
 import 'quadrilateral_corners.dart';
 
 /// In geometry a quadrilateral is a four-sided polygon, having
@@ -53,6 +55,15 @@ class Quadrilateral {
       bottomRight + local,
       bottomLeft + local,
     ]);
+  }
+
+  Offset centroid([double padding = 0]) {
+    final dxs = corners.map((corner) => corner.dx).sum;
+    final dys = corners.map((corner) => corner.dy).sum;
+    final dx = dxs / corners.length;
+    final dy = dys / corners.length;
+    
+    return Offset(dx - padding, dy - padding);
   }
 
   double get height {

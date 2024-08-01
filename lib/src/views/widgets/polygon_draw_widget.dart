@@ -18,8 +18,7 @@ class PolygonDrawWidget extends StatefulWidget {
   final PainterController controller;
 
   /// Creates a [PolygonDrawWidget] with the given [controller].
-  const PolygonDrawWidget({required this.controller, Key? key})
-      : super(key: key);
+  const PolygonDrawWidget({required this.controller, super.key});
 
   @override
   State<PolygonDrawWidget> createState() => _PolygonDrawWidgetState();

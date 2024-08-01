@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:typed_data' show Float64List;
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
@@ -18,30 +17,19 @@ class NodePolygonDrawable extends Sized2DDrawable implements ShapeDrawable {
   /// Creates a new [NodePolygonDrawable] with the given [size], [paint] and [vertices].
   NodePolygonDrawable({
     required this.vertices,
-    required Size size,
-    required Offset position,
+    required super.size,
+    required super.position,
     Paint? paint,
-    double rotationAngle = 0,
-    double scale = 1,
-    Set<ObjectDrawableAssist> assists = const <ObjectDrawableAssist>{},
-    Map<ObjectDrawableAssist, Paint> assistPaints =
-        const <ObjectDrawableAssist, Paint>{},
-    bool locked = false,
-    bool hidden = false,
+    super.rotationAngle,
+    super.scale,
+    super.assists,
+    super.assistPaints,
+    super.locked,
+    super.hidden,
     Offset? shiftOffset,
     this.polygonCloseRadius,
   })  : paint = paint ?? ShapeDrawable.defaultPaint,
-        _shiftOffset = shiftOffset,
-        super(
-          size: size,
-          position: position,
-          rotationAngle: rotationAngle,
-          scale: scale,
-          assists: assists,
-          assistPaints: assistPaints,
-          locked: locked,
-          hidden: hidden,
-        );
+        _shiftOffset = shiftOffset;
 
   /// {@macro polygon_close_radius}
   final double? polygonCloseRadius;
@@ -69,7 +57,7 @@ class NodePolygonDrawable extends Sized2DDrawable implements ShapeDrawable {
       ..addPolygon(vertices, isClosed);
 
     /// Moves the polygon if it was manually moved/rotated.
-    final shiftedPath = _shiftOffset == null ? path : path.shift(_shiftOffset!);
+    final shiftedPath = _shiftOffset == null ? path : path.shift(_shiftOffset);
 
     /// Scales the polygon if it was manually scaled.
     final scalingMatrix4 = Float64List.fromList(
@@ -246,11 +234,11 @@ shiftOffset: $_shiftOffset,
 )''';
 
   @override
-  int get hashCode => hashValues(
+  int get hashCode => Object.hash(
         hidden,
         locked,
-        hashList(assists),
-        hashList(assistPaints.entries),
+        Object.hashAll(assists),
+        Object.hashAll(assistPaints.entries),
         rotationAngle,
         scale,
         paint,

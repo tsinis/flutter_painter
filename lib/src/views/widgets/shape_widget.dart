@@ -6,10 +6,7 @@ class _ShapeWidget extends StatefulWidget {
   final Widget child;
 
   /// Creates a [_ShapeWidget] with the given [controller], [child] widget.
-  const _ShapeWidget({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
+  const _ShapeWidget({required this.child, super.key});
 
   @override
   _ShapeWidgetState createState() => _ShapeWidgetState();
@@ -109,11 +106,10 @@ class _ShapeWidgetState extends State<_ShapeWidget> {
           .dispatch(context);
     }
 
-    DrawableCreatedNotification(currentShapeDrawable).dispatch(context);
+    if (currentShapeDrawable == null) return;
+    DrawableCreatedNotification(currentShapeDrawable!).dispatch(context);
 
-    setState(() {
-      currentShapeDrawable = null;
-    });
+    setState(() => currentShapeDrawable = null);
   }
 
   /// Replaces a drawable with a new one.

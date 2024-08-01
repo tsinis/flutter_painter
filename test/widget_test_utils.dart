@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 /// Simple wrapper for testing specific widget
 /// so that we don't need to write things multiple times
 class WidgetTestbed {
-
   /// In case that we want to specify platform  for running tests
   Future<void> withPlatform(
     final TargetPlatform platform,
@@ -23,21 +22,18 @@ class WidgetTestbed {
   Widget simpleWrap({
     final Widget? child,
     final Brightness brightness = Brightness.light,
-  }) {
-    return MaterialApp(
-      theme: ThemeData(brightness: brightness),
-      home: child != null ? Material(child: child) : null,
-    );
-  }
+  }) =>
+      MaterialApp(
+        theme: ThemeData(brightness: brightness),
+        home: child != null ? Material(child: child) : null,
+      );
 
   void increaseScreenSize(
     final WidgetTester tester, [
     final Size size = const Size(30000, 30000),
-  ]) {
-    tester.binding.window.physicalSizeTestValue = size;
-  }
+  ]) =>
+      tester.view.physicalSize = size;
 
-  void clearPhysicalSize(final WidgetTester tester) {
-    tester.binding.window.clearPhysicalSizeTestValue();
-  }
+  void clearPhysicalSize(final WidgetTester tester) =>
+      tester.view.resetPhysicalSize();
 }

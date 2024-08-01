@@ -190,11 +190,9 @@ class _ArrangeBuilder {
       when(() => _canvas.save()).thenAnswer((final _) async => {});
 
   void withFakeCallbacks() {
-    registerFallbackValue(FakePaint());
+    registerFallbackValue(Paint());
   }
 }
-
-class FakePaint extends Fake implements Paint {}
 
 class MockCanvas extends Mock implements Canvas {}
 
